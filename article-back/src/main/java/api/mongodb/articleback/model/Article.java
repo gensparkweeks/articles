@@ -16,5 +16,4 @@ public class Article {
     private String photo;
     private boolean completed;
 
-
 }

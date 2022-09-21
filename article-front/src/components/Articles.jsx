@@ -4,7 +4,10 @@ import Global from './Global';
 import empty from '../statics/images/empty.png'
 import edit from '../statics/images/edit.png'
 import dele from '../statics/images/x.png'
+import completed from '../statics/images/completed.png'
+import pending from '../statics/images/pending.png'
 import Loading from './Loading';
+import { useNavigate } from 'react-router-dom';
 
 function Articles(){
 
@@ -12,9 +15,11 @@ function Articles(){
     const [status, setStatus] = useState(false);
 
     const imagePath = Global.imgPath;
+    const navigate = useNavigate();
 
-    const onEdit = ()=>{
-
+    const onEdit = (id)=>{
+        navigate("/articleupdate/"+id)
+        
     }
 
     const onDelete = (id)=>{
@@ -92,10 +97,14 @@ function Articles(){
                                 {article.published.substring(0, 10)}
                             </div>
                             <div className="col-1">
-                                {article.completed}
+                                {article.completed ?
+                                    <img src={completed} className="img-thumbnail cursor" width={25} alt="Completed" />
+                                :
+                                <img src={pending} className="img-thumbnail cursor" width={25} alt="Pending" />
+                                }
                             </div>
                             <div className="col-1">
-                                 <img onClick={onEdit} src={edit} className="img-thumbnail cursor" width={21} alt="Edit" />
+                                 <img onClick={() => onEdit(article.id)} src={edit} className="img-thumbnail cursor" width={21} alt="Edit" />
                             </div>
                             <div className="col-1">
                                 <img onClick={() => onDelete(article.id)} src={dele} className="img-thumbnail cursor" width={21} alt="Delete" />
