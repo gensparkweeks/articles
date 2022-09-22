@@ -1,9 +1,12 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios';
 import Global from './Global';
+
 import empty from '../statics/images/empty.png'
-import edit from '../statics/images/edit.png'
-import dele from '../statics/images/x.png'
+import edit from '../statics/images/modify.png'
+import dele from '../statics/images/erase.png'
+import create from '../statics/images/create.png';
+
 import completed from '../statics/images/completed.png'
 import pending from '../statics/images/pending.png'
 import Loading from './Loading';
@@ -16,6 +19,10 @@ function Articles(){
 
     const imagePath = Global.imgPath;
     const navigate = useNavigate();
+
+    const onCreate = ()=>{
+        navigate("/articleadd")
+    }
 
     const onEdit = (id)=>{
         navigate("/articleupdate/"+id)
@@ -44,32 +51,38 @@ function Articles(){
     if (articles.length >= 1){
         return(
             <div className="container">
-                <h1 className="p-4 bg-header mt-1">List of Articles</h1>
+                <div className='sticky-top mb-4'>
+                    <h1 className="p-4 bg-header mt-1">List of Articles</h1>
                 
-                <div className="row fw-bold mb-4">
-                    <div className="col-1">
-                        Image
+                    <div className="row fw-bold mb-4">
+                        <div className="col-1">
+                            Image
+                        </div>
+                        <div className="col-2 ">
+                            Title
+                        </div>
+                        <div className="col-3">
+                            Description
+                        </div>
+                        <div className="col-2">
+                            Modified
+                        </div>
+                        <div className="col-1">
+                            Completed
+                        </div>
+                        <div className="col-1">
+                            Edit
+                        </div>
+                        <div className="col-1">
+                            Delete
+                        </div>
+                        <div className="col-1">
+                            <img onClick={() => onCreate()} src={create} className="img-thumbnail cursor" width={24} alt="Create" />
+                            Add
+                        </div>
                     </div>
-                    <div className="col-2 ">
-                        Image Of Article
-                    </div>
-                    <div className="col-3">
-                        Description
-                    </div>
-                    <div className="col-2">
-                        Published
-                    </div>
-                    <div className="col-1">
-                        Completed
-                    </div>
-                    <div className="col-1">
-                        Edit
-                    </div>
-                    <div className="col-1">
-                        Delete
-                    </div>
-                </div>    
-                
+                </div>
+                               
                 {
     
                     articles.map(article =>
@@ -78,9 +91,9 @@ function Articles(){
                             <div className="col-1">
                             {
                             article.photo ?
-                                <img src={imagePath + article.photo} className="img-thumbnail cursor" width={70} alt="Edit" />
+                                <img onClick={() => onEdit(article.id)} src={imagePath + article.photo} className="img-thumbnail cursor" width={70} alt="Edit" />
                                 :
-                                <img src={empty} className="img-thumbnail cursor" width={50} alt="Edit" />
+                                <img onClick={() => onEdit(article.id)} src={empty} className="img-thumbnail cursor" width={50} alt="Edit" />
                             }    
                             </div>
                             <div className="col-2 ">
@@ -88,7 +101,7 @@ function Articles(){
                             </div>
                             <div className="col-3">
                                 {article.description ?
-                                    article.description.substring(0, 25)
+                                    article.description.substring(0, 21) + " ..."
                                 :
                                  " "
                                 }
@@ -100,14 +113,14 @@ function Articles(){
                                 {article.completed ?
                                     <img src={completed} className="img-thumbnail cursor" width={25} alt="Completed" />
                                 :
-                                <img src={pending} className="img-thumbnail cursor" width={25} alt="Pending" />
+                                    <img src={pending} className="img-thumbnail cursor" width={25} alt="Pending" />
                                 }
                             </div>
                             <div className="col-1">
-                                 <img onClick={() => onEdit(article.id)} src={edit} className="img-thumbnail cursor" width={21} alt="Edit" />
+                                 <img onClick={() => onEdit(article.id)} src={edit} className="img-thumbnail cursor" width={25} alt="Edit" />
                             </div>
                             <div className="col-1">
-                                <img onClick={() => onDelete(article.id)} src={dele} className="img-thumbnail cursor" width={21} alt="Delete" />
+                                <img onClick={() => onDelete(article.id)} src={dele} className="img-thumbnail cursor" width={25} alt="Delete" />
                             </div>
     
                         </div>

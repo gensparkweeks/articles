@@ -7,20 +7,49 @@ import {useForm} from 'react-hook-form';
 
 const ArticleUpdate = () => {
 
-    const {register, formState:{errors}, handleSubmit} = useForm({
-        
-    });
-
-    const onSubmit = (data) => {
-        console.log(data);
-    }
-
+    const navigate = useNavigate();
+    const {register, formState:{errors}, handleSubmit} = useForm({});
 
     const {id} = useParams();
     const [article, setArticle]  = useState({});
     const {url, imgPath} = Global;
 
-    const navigate = useNavigate();
+    const onSubmit = (data) => {
+        
+        var photoUpdated = article.photo;
+
+        if (data.file[0] !== null && data.file[0] !== undefined){
+
+            photoUpdated = data.file[0].name;
+
+            const fd = new FormData();
+            fd.append('file0', data.file[0]);
+
+            //Put
+            axios.put("http://localhost:8080/api/upload", fd)
+            .then(res =>{
+                if(res.ok) {
+                    console.log(res.data);
+                }
+            })
+        }
+
+        const loadParams = {
+            id:id, 
+            name: data.name, 
+            description: data.description,
+            published: new Date(),
+            photo: photoUpdated,
+            completed:data.completed
+        }
+        //Put
+        axios.put(url + "articles", loadParams)
+            .then(res => {
+                if (res.data){ 
+                }
+            });
+        navigate("/articles");
+    }
 
     const onCancel = ()=>{
         navigate("/articles");
@@ -33,12 +62,11 @@ const ArticleUpdate = () => {
                 setArticle(res.data)
             })
     }, [url, id])
-    
 
     if (article != null){
         return (
             <div className="container mb-4">
-                <h1 className="p-4 bg-header mt-1">Editing Article with id: {id}</h1>
+                <h1 className="p-4 bg-header mt-1">Editing an Article</h1>
                 
                 <div className='row mb-3'>
 
@@ -63,7 +91,7 @@ const ArticleUpdate = () => {
                                 <input type="text" 
                                     className="form-control" 
                                     defaultValue={article.name}
-                                    {...register('name',{required:true})} 
+                                    {...register('name', {required: true})} 
                                 />
                                 {errors.name?.type === 'required' && <p>The name must be entered</p>}
                                 
@@ -74,7 +102,7 @@ const ArticleUpdate = () => {
                                 <textarea className="form-control" 
                                     rows="2"
                                     defaultValue={article.description}
-                                    {...register('description',{required:true})} 
+                                    {...register('description', {required: true})} 
                                 />
                                 {errors.description?.type === 'required' && <p>The description must be entered</p>}
                             </div>
@@ -101,7 +129,7 @@ const ArticleUpdate = () => {
                             <div className="col-11 d-flex justify-content-center">
                                 <button type='submit' className="btn btn-primary">Update</button>
                                 <div className='col-1 mb-1'></div>
-                                <button onClick={()=>{onCancel()}} className="btn btn-danger">Cancel</button>
+                                <button onClick={()=>{onCancel()}} className="btn btn-secondary">Cancel</button>
                             </div>
                             
                         </form>
