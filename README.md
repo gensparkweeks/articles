@@ -34,17 +34,21 @@ npm install npm -g
 cd main directory
 npx create-react-app rm-frontend
 ```
-We used `SweetAlert2` for alerts:
+We also installed `react-roter-dom` for manage routes and more:
 ```sh
-npm install --save sweetalert2
+npm install --save react-router-dom
 ```
 We worked with `axios` for doing http requests:
 ```sh
 npm install --save axios
 ```
-We also installed `react-roter-dom` for manage routes and more:
+We also installed `react-hook-form` for manage and validate forms:
 ```sh
-npm install --save react-router-dom
+npm install react-hook-form
+```
+We used `SweetAlert2` for alerts:
+```sh
+npm install --save sweetalert2
 ```
 And `Moment` for formatting dates:
 ```sh
@@ -53,12 +57,12 @@ npm install --save moment react-moment
 ### What we learned?
 > Related with the back-end:
 >> Go deeper with Spring Boot framework.
->> Better experience working with relationship between entities. 
+>> Better experience working with No SQL database (MongoDB). 
 >> How to configurate and work with uploading images.
 >> Allow connection to the front-end.
 
 > Related with the front-end:
->> First and a great experience using React.
+>> A great experience using React.
 >> Using libraries like: SweetAlert2, Moment, Axios, and react-router-dom.
 >> Implementing process to interact with the backend.
 
