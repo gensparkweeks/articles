@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useNavigate} from 'react-router-dom';
 import Global from './Global';
-import empty from '../statics/images/empty.png'
 import {useForm} from 'react-hook-form';
 
 const ArticleAdd = () => {
@@ -69,11 +68,7 @@ const ArticleAdd = () => {
             
             <div className='row mb-3'>
 
-                <div className='col-6 mb-3'>
-                    <div>
-                        <img src={empty} className="img-thumbnail cursor" width={300} alt="Article" />
-                    </div>
-                </div>
+                <div className='col-3'></div>
 
                 <div className='col-6 mb-3' >
 
@@ -92,7 +87,7 @@ const ArticleAdd = () => {
                         <div className="mb-1">
                             <label  className="form-label">Description</label>
                             <textarea className="form-control" 
-                                rows="2"
+                                rows="3"
                                 {...register('description', {required:true})} 
                             />
                             {errors.description?.type === 'required' && <p>The description must be entered</p>}
@@ -117,7 +112,7 @@ const ArticleAdd = () => {
                             </div>
                         </div>
                         <div className="col-11 d-flex justify-content-center">
-                            <button type='submit' className="btn btn-primary">Add</button>
+                            <button type='submit' className="btn btn-primary">Add it</button>
                             <div className='col-1 mb-1'></div>
                             <button onClick={()=>{onCancel()}} className="btn btn-secondary">Cancel</button>
                         </div>
@@ -125,6 +120,8 @@ const ArticleAdd = () => {
                     </form>
 
                 </div>
+
+                <div className='col-3'></div>
 
             </div>
 

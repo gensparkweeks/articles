@@ -12,6 +12,9 @@ import pending from '../statics/images/pending.png'
 import Loading from './Loading';
 import { useNavigate } from 'react-router-dom';
 
+import Moment from 'react-moment'
+import Swal from 'sweetalert2'
+
 function Articles(){
 
     const [articles, setArticles] = useState([]);
@@ -25,16 +28,32 @@ function Articles(){
     }
 
     const onEdit = (id)=>{
-        navigate("/articleupdate/"+id)
-        
+        navigate("/articleupdate/"+id)  
     }
 
-    const onDelete = (id)=>{
-        axios.delete("http://localhost:8080/api/articles/"+ id)
-              .then(res => {
-                setStatus(false);
-            })
+    const onDelete = (id, name)=>{      
+        
+        Swal.fire({
+            icon: "warning",
+            title: "Are you sure to delete '"+ name +"' article?",
+            showDenyButton: true,
+            denyButtonText: "Cancel",
+            denyButtonColor: "#6C757D",
+            confirmButtonText: "Delete",
+            confirmButtonColor: "#0D6EFD",
+          }).then((res) => {
+            if (res.isConfirmed) {
 
+                axios.delete("http://localhost:8080/api/articles/"+ id)
+                .then(res => {
+                  setStatus(false);
+              })
+
+            }
+            // if (res.isDenied) {
+            //   Swal.fire("Cancel", "Cancel");
+            // }
+          });
     }
 
     const loadArticles = ()=>{
@@ -51,10 +70,11 @@ function Articles(){
     if (articles.length >= 1){
         return(
             <div className="container">
-                <div className='sticky-top mb-4'>
-                    <h1 className="p-4 bg-header mt-1">List of Articles</h1>
+                <div className='sticky-top mb-2 rounded-3'>
+
+                    <h1 className="p-3 bg-header mt-1 mb-0">List of Articles</h1>
                 
-                    <div className="row fw-bold mb-4">
+                    <div className="row fw-bold col-12 bg-little m-auto">
                         <div className="col-1">
                             Image
                         </div>
@@ -76,7 +96,7 @@ function Articles(){
                         <div className="col-1">
                             Delete
                         </div>
-                        <div className="col-1">
+                        <div className="col-1 ">
                             <img onClick={() => onCreate()} src={create} className="img-thumbnail cursor" width={24} alt="Create" />
                             Add
                         </div>
@@ -107,7 +127,8 @@ function Articles(){
                                 }
                             </div>
                             <div className="col-2">
-                                {article.published.substring(0, 10)}
+                                {/* {article.published.substring(0, 10)} */}
+                                <Moment to={article.published} />
                             </div>
                             <div className="col-1">
                                 {article.completed ?
@@ -120,7 +141,7 @@ function Articles(){
                                  <img onClick={() => onEdit(article.id)} src={edit} className="img-thumbnail cursor" width={25} alt="Edit" />
                             </div>
                             <div className="col-1">
-                                <img onClick={() => onDelete(article.id)} src={dele} className="img-thumbnail cursor" width={25} alt="Delete" />
+                                <img onClick={() => onDelete(article.id, article.name)} src={dele} className="img-thumbnail cursor" width={25} alt="Delete" />
                             </div>
     
                         </div>
@@ -130,7 +151,7 @@ function Articles(){
             </div>
             
         )
-    }else if(status){
+    }else if(!status){
         return(
             <div>
                 <Loading />

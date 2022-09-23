@@ -1,34 +1,33 @@
-"# articles" 
-![RM-Banner](/assets/rm-banner.jpg "Real MAdrid")
+![RM-Banner](/assets/articles-main.png "Article Welcome")
 ## Welcome to the Articles Manage App. 
 ###### Version 1.0
 
-This is a ***Spring-Boot MongoDB React*** project. With this application we try to manage the squad of a soccer team in order to maintain it updated. Players, countries and positions within a soccer game are managed for this application.
+This is a ***Spring-Boot MongoDB React*** project. With this application we try to handle the creation, update, and manage articles. Articles will be created, updated, and erased in a esay way.
 
 ### Technologies used
 | Tecnology | Description |
 | --------- | ----------- |
 | Spring Boot | for building our backend |
-| MySQL | to store our entities in a database |
+| Mongo DB | to store our articles in a database |
 | React | to build our frontend |
 
 
-#### Spring Boot
+#### Spring Boot ![RM-Banner](/assets/springboot.png "Spring Boot")
 * The **project structure** was made using [Spring Initializer](https://start.spring.io/).
 * We use Spring Boot to build our API backend, and this project include these dependencies:
     * Spring Web
     * Spring Data MongoDB
     * Lombok
 
-* It also contains the entity **article**
+* It also contains the entity **Article**
 * This Backend also contains a ***unit test*** module.
 
-#### MongoDB
-We use MySQL as a `relational database model` to store data
-* This is the ***diagram*** of our realmadrid MySQL database:
-![RM-Banner](/assets/mysql.png "realmadrid MySQL diagram")
+#### MongoDB ![RM-Banner](/assets/mongo.png "MongoDB")
+We use MongoDB as a `No relational database model` to store data
+* This is the ***diagram*** of our art_mongodb Mongo database:
+![RM-Banner](/assets/mongodb.png "realmadrid Mongo diagram")
 
-#### React
+#### React ![RM-Banner](/assets/ReactNoback.png "React")
 We installed or updated *nodejs* to create our React module for our Front:
 ```sh
 npm install npm -g 
@@ -67,4 +66,4 @@ npm install --save moment react-moment
 
 > Good introduce to [Kanban Board](https://draft.io/jfpa4ryqxn63gg25dh9wds6gvdq6erg4jjr4rbpvyry6 "Kanban")
 
-![RM-Banner](/assets/rm-banner.jpg "Real MAdrid")
+![RM-Banner](/assets/articles-main.png "Article Welcome")

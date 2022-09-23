@@ -100,7 +100,7 @@ const ArticleUpdate = () => {
                             <div className="mb-1">
                                 <label  className="form-label">Description</label>
                                 <textarea className="form-control" 
-                                    rows="2"
+                                    rows="3"
                                     defaultValue={article.description}
                                     {...register('description', {required: true})} 
                                 />
