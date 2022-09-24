@@ -43,4 +43,9 @@ public class ArticleServiceImpl implements ArticleService{
     public void delete(String id) {
         articleDao.deleteById(id);
     }
+
+    @Override
+    public List<Article> findPublishedDesc() {
+        return articleDao.findPublishedDesc();
+    }
 }

@@ -43,4 +43,9 @@ public class ArticleController {
     public void delete(@PathVariable String id){
         articleService.delete(id);
     }
+
+    @GetMapping("/published")
+    public List<Article> publishedDesc(){
+        return articleService.findPublishedDesc();
+    }
 }

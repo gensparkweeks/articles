@@ -24,7 +24,7 @@ This is a ***Spring-Boot MongoDB React*** project. With this application we try 
 
 #### MongoDB ![RM-Banner](/assets/mongo.png "MongoDB")
 We use MongoDB as a `No relational database model` to store data
-* This is the ***diagram*** of our art_mongodb Mongo database:
+* This is how look our ***art_mongodb*** Mongo database:
 ![RM-Banner](/assets/mongodb.png "realmadrid Mongo diagram")
 
 #### React ![RM-Banner](/assets/ReactNoback.png "React")
@@ -68,6 +68,6 @@ npm install --save moment react-moment
 
 > Complete a full stack Java application.
 
-> Good introduce to [Kanban Board](https://draft.io/jfpa4ryqxn63gg25dh9wds6gvdq6erg4jjr4rbpvyry6 "Kanban")
+> Good introduce to [Kanban Board](https://draft.io/9ebrxbyz5e4buxhxtsp4rwvh8by94xuvs692ahzqwugq "Kanban")
 
 ![RM-Banner](/assets/articles-main.png "Article Welcome")

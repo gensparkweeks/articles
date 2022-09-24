@@ -11,4 +11,5 @@ public interface ArticleService {
     public Article save(Article article);
     public Article update(Article article);
     public  void delete(String id);
+    public List<Article> findPublishedDesc();
 }
