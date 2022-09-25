@@ -55,7 +55,7 @@
 }
 
 .setheight {
-    height: 400px;
+    height: 500px;
     overflow: hidden;
 }
 
@@ -68,4 +68,10 @@
 
 .btn-samecolor {
     background: #e8eaed !important;
+}
+
+.imgnormalizada img {
+    width: auto;
+    height: 500px;
+    max-height: 500px;
 }

@@ -11,8 +11,6 @@ import java.util.List;
 @Repository
 public interface ArticleDao extends MongoRepository<Article, String> {
 
-//    @Query(sort= "{published: -1}")
-//@Query("{name : tiger}")
 @Query(value = "{}", sort= "{published: -1}")
 public List<Article> findPublishedDesc();
 

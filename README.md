@@ -2,7 +2,7 @@
 ## Welcome to the Articles Manage App. 
 ###### Version 1.0
 
-This is a ***Spring-Boot MongoDB React*** project. With this application we try to handle the creation, update, and manage articles. Articles will be created, updated, and erased in a esay way.
+This is a ***Spring-Boot MongoDB React*** project. With this application we try to handle the creation, update, and manage articles. Articles will be created, updated, and erased in an esay way.
 
 ### Technologies used
 | Tecnology | Description |
@@ -24,11 +24,11 @@ This is a ***Spring-Boot MongoDB React*** project. With this application we try 
 
 #### MongoDB ![RM-Banner](/assets/mongo.png "MongoDB")
 We use MongoDB as a `No relational database model` to store data
-* This is how look our ***art_mongodb*** Mongo database:
+* This is how our ***art_mongodb*** Mongo database looks:
 ![RM-Banner](/assets/mongodb.png "realmadrid Mongo diagram")
 
 #### React ![RM-Banner](/assets/ReactNoback.png "React")
-We installed or updated *nodejs* to create our React module for our Front:
+We installed or updated *nodejs* to create our React module for our Front-End:
 ```sh
 npm install npm -g 
 cd main directory
@@ -70,4 +70,4 @@ npm install --save moment react-moment
 
 > Good introduce to [Kanban Board](https://draft.io/9ebrxbyz5e4buxhxtsp4rwvh8by94xuvs692ahzqwugq "Kanban")
 
-![RM-Banner](/assets/articles-main.png "Article Welcome")
+![RM-Banner](/assets/articles-footer.png "Article Welcome")
