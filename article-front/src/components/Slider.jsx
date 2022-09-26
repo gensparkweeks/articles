@@ -1,6 +1,3 @@
-import carouseLion from '../statics/images/lion.jpg'
-import carouselEagle from '../statics/images/eagle.jpg'
-import carouselShark from '../statics/images/shark.jpg'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Global from './Global'
@@ -11,10 +8,7 @@ import empty from '../statics/images/empty.png'
 function Slider() {
 
   const navigate = useNavigate();
-  const [articles, setArticles] = useState([]);
-  const [article1, setArticle1] = useState({}); 
-  const [article2, setArticle2] = useState({});
-  const [article3, setArticle3] = useState({});
+  const [articles, setarticles] = useState([]);
 
   const [status, setStatus] = useState(false);
   const {url, imgPath} = Global;
@@ -22,29 +16,29 @@ function Slider() {
   const handleOnClick = ()=>{
     navigate("/articles")
   }
+
+  const loadArticles = async ()=> {
+    await axios.get(url + "articles/published")
+    .then(res => {
+      setarticles(res.data)
+      setStatus(true);
+    })
+
+  }
  
   useEffect(() => {
-    axios.get(url + "articles/published")
-      .then(res => {
-        setArticles(res.data)
-        setStatus(true);
-      })
-    
-      setArticle1(articles[0]);
-      setArticle2(articles[1]);
-      setArticle3(articles[2]);
-
-  }, [url, articles]);
+    loadArticles();
+  });
 
   if (articles.length >= 1){
+  
     return (
       <>
         <div className='sticky-top mb-2 rounded-3'>
           <div className='d-flex justify-content-center'>
             <h1 className="p-3 bg-header mt-1 mb-0">Welcome to the Articles Manager App</h1>
             <button onClick={()=> handleOnClick()} className='btn btn-samecolor'>See Articles</button>
-          </div>
-          
+          </div>          
           <p>"An easy way to manage your articles..."</p>
         </div>
   
@@ -58,28 +52,43 @@ function Slider() {
         <div className="carousel-inner">
 
           <div className="carousel-item active imgnormalizada" data-bs-interval="10000">
-           
-              <img src={carouselShark} className="d-block w-100" alt="..."/>
-      
+
+            {
+            articles[0].photo !== null ?
+              <img src={imgPath + articles[0].photo} className="d-block w-100" alt="..."/>
+            :
+            <img src={empty} className="d-block w-100" alt="..."/>
+            }
             <div className="carousel-caption d-none d-md-block">
-              <h5>First slide label</h5>
-              <p>Some representative placeholder content for the first slide.</p>
+              <h5>{articles[0].name.substring(0, 18)}</h5>
+              <p>{articles[0].description.substring(0, 55) + " ..."}</p>
             </div>
           </div>
 
           <div className="carousel-item imgnormalizada" data-bs-interval="2000">
-            <img src={carouselEagle} className="d-block w-100" alt="..."/>
+            {
+              articles[1].photo !== null ?
+               <img src={imgPath + articles[1].photo} className="d-block w-100" alt="..."/>
+            :
+               <img src={empty} className="d-block w-100" alt="..."/>
+            }
             <div className="carousel-caption d-none d-md-block">
-              <h5>Second slide label</h5>
-              <p>Some representative placeholder content for the second slide.</p>
+              <h5>{articles[1].name.substring(0, 18)}</h5>
+              <p>{articles[1].description.substring(0, 55) + " ..."}</p>
             </div>
           </div>
 
           <div className="carousel-item imgnormalizada">
-            <img src={carouseLion} className="d-block w-100" alt="..." />
+            {
+              articles[2].photo !== null ?
+                <img src={imgPath + articles[2].photo} className="d-block w-100" alt="..."/>
+            :
+              <img src={empty} className="d-block w-100" alt="..."/>
+            }
+           
             <div className="carousel-caption d-none d-md-block">
-              <h5>Third slide label</h5>
-              <p>Some representative placeholder content for the third slide.</p>
+              <h5>{articles[2].name.substring(0, 18)}</h5>
+              <p>{articles[2].description.substring(0, 55) + " ..."}</p>
             </div>
           </div>
 

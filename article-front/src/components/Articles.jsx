@@ -58,7 +58,7 @@ function Articles(){
 
     const loadArticles = ()=>{
         
-        axios.get("http://localhost:8080/api/articles/")
+        axios.get("http://localhost:8080/api/articles/published")
               .then(res => {
                 setArticles(res.data);
                 setStatus(true);
