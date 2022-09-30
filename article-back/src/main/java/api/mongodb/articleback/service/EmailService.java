@@ -10,13 +10,17 @@ public class EmailService {
     @Autowired
     private JavaMailSender javaMailSender;
 
-    public void sendEmail(String toEmail, String fullName){
+    public void sendEmail(String toEmail, String fullName, String email, String msg){
 
-        String url = "https://www.google.com/";
+        String url = "http://localhost:3000/";
         String subject = "Action Required - Thank you for contacting us";
         String body = "Dear "+ fullName+",\n";
         body += "    Please click the link below to create your credentials:\n\n";
         body+= "click here: " + url + "\n\n";
+
+        body += "Message from: "+email + "\n";
+        body += msg + "\n\n";
+
         body += "Thank you,\n";
         body += "The Articles Manage App Team";
 

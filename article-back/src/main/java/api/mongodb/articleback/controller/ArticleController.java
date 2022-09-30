@@ -30,6 +30,7 @@ public class ArticleController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public Article save(@RequestBody Article article){
+
         return articleService.save(article);
     }
 

@@ -21,15 +21,8 @@ const Contact = () => {
     });
 
     const onSubmit =  (data) => {
-
-        const loadParams = {
-            mailto: 'mtoirac2011@gmail.com',
-            fullname: 'John Miller'
-        }
-
-        const urlFull = `${url}sendEmail?mailto=mtoirac2011@gmail.com&fullname=${data.first}`
-
-        console.log(urlFull)
+        console.log("From Spring");
+        const urlFull = `${url}sendEmail?mailto=mtoirac2011@gmail.com&fullname=${data.first}&email=${data.email}&message=${data.message}`      
 
         axios.get(urlFull)
             .then(res => {
@@ -39,6 +32,14 @@ const Contact = () => {
         Swal.fire("Good job!", "Your email was sent!", "success");
         navigate("/articles");     
 
+    }
+
+    const onEmailJs = (data)=>{
+        console.log("From EmailJs");
+        emailjs.send('service_wiylkri', 'template_i367izz', {fullname: data.first, email: data.email, message: data.message}, '40J0Q1y60dITDUwU_');
+        
+        Swal.fire("Good job!", "Your email was sent!", "success");
+        navigate("/articles");  
     }
 
     return (
@@ -104,10 +105,13 @@ const Contact = () => {
                             {errors.message?.type === 'required' && <p className='error-msg'>Message must be entered</p>}
                         </div>
 
-                        <div className="col-12 mt-2">
-                            <button type='submit' className="btn btn-primary">Send Up</button>
+                        <div className="col-12 mt-2 d-flex">
+                            <div className='col-2 mb-1'></div>
+                            <button type='submit' className="btn btn-primary">From SpringBoot</button>
+                            <div className='col-1 mb-1'></div>
+                            <button onClick={handleSubmit(onEmailJs)} className="btn btn-secondary">From EmailJs</button>
                         </div>
-
+                        
                     </form>
                 </div>
             </div>    
