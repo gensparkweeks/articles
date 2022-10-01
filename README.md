@@ -18,6 +18,7 @@ This is a ***Spring-Boot MongoDB React*** project. With this application we try 
     * Spring Web
     * Spring Data MongoDB
     * Lombok
+    * Java Mail Sender
 
 * It also contains the entity **Article**
 * This Backend also contains a ***unit test*** module.
@@ -34,9 +35,13 @@ npm install npm -g
 cd main directory
 npx create-react-app rm-frontend
 ```
-We also installed `react-roter-dom` for manage routes and more:
+We installed `react-roter-dom` for manage routes and more:
 ```sh
 npm install --save react-router-dom
+```
+We installed `@emailjs/browser` for sending emails:
+```sh
+npm install @emailjs/browser --save
 ```
 We worked with `axios` for doing http requests:
 ```sh
