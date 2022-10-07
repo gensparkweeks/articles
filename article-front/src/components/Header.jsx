@@ -19,7 +19,9 @@ const Header = () => {
               >
                 <Nav.Link href="/articles">Articles</Nav.Link>
 
-                <Nav.Link href="/contact">Contact</Nav.Link>
+                <Nav.Link href="/contact-java">Contact/JavaMailSender</Nav.Link>
+
+                <Nav.Link href="/contact-emailjs">Contact/EmailJs</Nav.Link>
                 
               </Nav>
 

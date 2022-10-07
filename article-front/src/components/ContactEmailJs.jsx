@@ -1,13 +1,11 @@
 import React from 'react';
 import {useForm} from 'react-hook-form';
-import axios from 'axios';
-import Global from './Global'
+import emailjs from '@emailjs/browser'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom';
 
-const Contact = () => {
+const ContactEmailJs = () => {
 
-    const {url} = Global;
     const navigate = useNavigate();
 
     const {register, formState:{errors}, handleSubmit} = useForm({
@@ -20,16 +18,11 @@ const Contact = () => {
     });
 
     const onSubmit =  (data) => {
-        console.log("From Spring");
-        const urlFull = `${url}sendEmail?mailto=mtoirac2011@gmail.com&fullname=${data.first}&email=${data.email}&message=${data.message}`      
-
-        axios.get(urlFull)
-            .then(res => {
-                console.log(res)
-            })
+        console.log("From EmailJs");
+        emailjs.send('service_wiylkri', 'template_i367izz', {fullname: data.first, email: data.email, message: data.message}, '40J0Q1y60dITDUwU_');
         
         Swal.fire("Good job!", "Your email was sent!", "success");
-        navigate("/articles");     
+        navigate("/articles");   
 
     }
 
@@ -37,7 +30,7 @@ const Contact = () => {
         <div className="container">
 
             <div className='sticky-top mb-2 rounded-3'>
-                <h1 className="p-3 bg-header mt-1 mb-0">Contact Us - JavaMailSender</h1>
+                <h1 className="p-3 bg-header mt-1 mb-0">Contact Us - EmailJs</h1>
             </div>
 
             <div className='row mb-3'>
@@ -97,7 +90,7 @@ const Contact = () => {
                         </div>
 
                         <div className="col-12 mt-2 d-flex">
-                            <button type='submit' className="btn btn-primary">Submt</button>                           
+                            <button type='submit' className="btn btn-primary">Submit</button>
                         </div>
                         
                     </form>
@@ -108,4 +101,4 @@ const Contact = () => {
     );
 }
 
-export default Contact;
+export default ContactEmailJs;

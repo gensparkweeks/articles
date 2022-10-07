@@ -39,7 +39,7 @@ We installed `react-roter-dom` for manage routes and more:
 ```sh
 npm install --save react-router-dom
 ```
-We installed `@emailjs/browser` for sending emails:
+We installed `@emailjs/browser` for [sending emails](https://dashboard.emailjs.com/admin/templates "Emailjs"):
 ```sh
 npm install @emailjs/browser --save
 ```
